@@ -13,12 +13,23 @@ def load_posts():
 
     for i, row in enumerate(open("seed_data/u.user")):
         row = row.rstrip()
-        post_id, account, shortcode, location_name, slug = row.split("|")
+        post_id, account, shortcode, location_name, slug, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, place_id = row.split("|")
 
         post = Post(post_id=post_id,
                     account=account,
+                    shortcode=shortcode,
                     location_name=location_name,
-                    slug=slug)
+                    slug=slug,
+                    lat=lat,
+                    lng=lng,
+                    viewport_ne_lat=viewport_ne_lat,
+                    viewport_ne_lng=viewport_ne_lng,
+                    viewport_sw_lat=viewport_sw_lat,
+                    viewport_sw_lng=viewport_sw_lng,
+                    formatted_address=formatted_address,
+                    maps_name=maps_name,
+                    rating=rating,
+                    place_id = place_id)
 
         # We need to add to the session or it won't ever be stored
         db.session.add(post)

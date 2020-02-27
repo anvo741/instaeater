@@ -22,6 +22,17 @@ def login():
 	return render_template("login.html")
 
 
+@app.route('/soup')
+def default_view():
+	"""Show default view of Instaeater."""
+
+	
+
+	return render_template("soup.html",
+							accounts=accounts,
+							shortcodes=shortcodes)
+
+
 if __name__ == "__main__":
     app.debug = True
     # connect_to_db(app)
