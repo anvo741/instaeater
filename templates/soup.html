@@ -5,20 +5,23 @@
 {% block body %}
 <h1> Welcome to InstaEater </h1>
 Select an Instagram handle to view.
-<select name="account">
+<select name="account" id="account">
 	{% for account in accounts %}
 	<option value="account">{{ account }}</option>
 	{% endfor %}
 </select>
 
+<div id="posts">
 {% for shortcode in shortcodes %}
 <blockquote class="instagram-media">
 	<a href="https://instagram.com/p/{{ shortcode }}/"></a>
 </blockquote>
 {% endfor %}
+</div>
 
 {% endblock %}
 
 {% block js %}
 <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+<script src="/static/js/soup.js"></script>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 # flash, redirect, session
 # from flask_debugtoolbar import DebugToolbarExtension
 
@@ -31,11 +31,24 @@ def default_view():
 
 	posts = db.session.query(Post.shortcode).filter_by(account='noodlesoupboyz')
 	shortcodes = [post[0] for post in posts]
-	print(shortcodes)
 
 	return render_template("soup.html",
 							accounts=accounts,
 							shortcodes=shortcodes)
+
+
+@app.route('/api/get_shortcodes')
+def get_shortcodes():
+	"""Get shortcodes to embed posts after user selects new account to view."""
+	
+	new_account = request.args.get("account")
+	print(new_account)
+	posts = db.session.query(Post.shortcode).filter_by(account=new_account)
+	print(posts)
+	shortcodes = [post for post in posts]
+	print(shortcodes)
+
+	return jsonify(shortcodes)
 
 
 if __name__ == "__main__":
