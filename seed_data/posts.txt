@@ -10,15 +10,15 @@
 10|noodlesoupboyz|B7Sjzuajozd|Pho Y1 Noodle House|pho-y1-noodle-house|37.3062233|-121.8106583|37.30752547989272|-121.8094144201073|37.30482582010728|-121.8121140798928|1660 Capitol Expy, San Jose, CA 95121, United States|Phở Ý #1 Noodle House|4.3|ChIJm9rhMn4tjoARcjLvpEjmulk
 11|noodlesoupboyz|B7NDo0FjyLJ|Lam Hoa Thuan Restaurant|lam-hoa-thuan-restaurant|37.7631056|-122.4831944|37.76455837989272|-122.4818391201073|37.76185872010728|-122.4845387798927|2337 Irving St, San Francisco, CA 94122, United States|Lam Hoa Thuan|4|ChIJE0P_XXCHhYARpM8GqjXNeno
 12|noodlesoupboyz|B64n2s5jLv8|Turtle Tower|turtle-tower|37.7760491|-122.4023006|37.77742097989272-122.4010396701073|37.77472132010727-122.4037393298927|501 6th St, San Francisco, CA 94103, United States|Turtle Tower|4|ChIJ_SK4z5CAhYARNyd8g30-qRs
-13|eater_sf|B8y-hd8BTu5|Dumpling Time Thrive City|dumpling-time-thrive-city
-14|eater_sf|B8tu-fPBDDp|Maison Danel|maison-danel
-15|eater_sf|B8j2ZI-BEK4|Black Jet Baking Co|black-jet-baking-co
-16|eater_sf|B8b072wBHGc|Che Fico Alimentari|che-fico-alimentari
-17|eater_sf|B8SdlMxB5pS|Viridian|viridian
-18|eater_sf|B8NjUx_hOPS|Monsieur Benjamin|monsieur-benjamin
+13|eater_sf|B8y-hd8BTu5|Dumpling Time Thrive City|dumpling-time-thrive-city|37.7676344|-122.3888646|37.76959262989272|-122.3875774201073|37.76689297010728|-122.3902770798927|191 Warriors Way Suite 101, San Francisco, CA 94158, United States|Dumpling Time at Thrive City|4.5|ChIJR2AhaXJ_j4ARScj6r58240E
+14|eater_sf|B8tu-fPBDDp|Maison Daniel|maison-daniel|37.7864371|-122.4197449|37.78786972989273|-122.4184688701073|37.78517007010728|-122.4211685298927|1030 Polk St, San Francisco, CA 94109, United States|Maison Danel|4.8|ChIJeUE48jqBhYARrVWi_rFBrt4
+15|eater_sf|B8j2ZI-BEK4|Black Jet Baking Co|black-jet-baking-co|37.7391011|-122.4141424||37.74036602989272|-122.4127840201073|37.73766637010728|-122.4154836798927|833 Cortland Ave, San Francisco, CA 94110, United States|Black Jet Baking Co.|4.7ChIJyyWkI65_j4ARa7e3T3y4L_I
+16|eater_sf|B8b072wBHGc|Che Fico Alimentari|che-fico-alimentari|37.77741839999999|-122.4379276||37.77874677989272|-122.4367400201073|37.77604712010728|-122.4394396798927|834 Divisadero St, San Francisco, CA 94117, United States|Che Fico Alimentari|4.4|ChIJY9av7ViBhYAR3ejAF435Xz4
+17|eater_sf|B8SdlMxB5pS|Viridian|viridian|37.8111867|-122.2666443|37.81256442989272|-122.2653704201073||37.80986477010727|-122.2680700798927|2216 Broadway, Oakland, CA 94612, United States|Viridian|4.6|ChIJ6fQ5n_WBj4ART7Pv1tfV14g
+18|eater_sf|B8NjUx_hOPS|Monsieur Benjamin|monsieur-benjamin|37.7774562|-122.4232825|37.77881437989272|-122.4218483201073|37.77611472010727|-122.4245479798928|451 Gough St, San Francisco, CA 94102, United States||Monsieur Benjamin|4.4|ChIJp0l1kZiAhYARSdsaDqr2fdc
 19|eater_sf|B8AcwpbhNVx|Outerlands|outerlands
-20|eater_sf|B7-O8Z7B1s7|The Snug SF|the-snug-sf
-21|eater_sf|B77kaMtB8JM|Senor Sisig|senor-sisig
-22|eater_sf|B74yUYhhdKm|Dear Inga|dear-inga
-23|eater_sf|B72B5RQBwRP|China Live|china-live
-24|eater_sf|B7uA3Y_BjtB|Moongate Lounge|moongate-lounge
+20|eater_sf|B7-O8Z7B1s7|The Snug SF|the-snug-sf|37.7908333|-122.4344444||37.79219687989272|-122.4330001201073||37.78949722010728|-122.4356997798927|2301 Fillmore St, San Francisco, CA 94115, United States|The Snug|4.5|ChIJ-_7qDsaAhYARKG4Gj6yw2ho
+21|eater_sf|B77kaMtB8JM|Senor Sisig|senor-sisig|37.757149|-122.4213259|37.75850372989272|-122.4198955201073|37.75580407010727|-122.4225951798927|990 Valencia St, San Francisco, CA 94110, United States|Señor Sisig - Restaurant|4.6|ChIJNXQBDV9_j4ARA1fileVDACY
+22|eater_sf|B74yUYhhdKm|Dear Inga|dear-inga|37.7618143|-122.4229679|37.76307022989272|-122.4216063701073|37.76037057010728|-122.4243060298927|3560 18th St, San Francisco, CA 94110, United States|Dear Inga|4.6|ChIJc003Dx9_j4ARifVeGW7SQRM
+23|eater_sf|B72B5RQBwRP|China Live|china-live|37.7980055|-122.4079163|37.79921617989272-122.4065690201073|37.79651652010728|-122.4092686798927|644 Broadway, San Francisco, CA 94133, United States|China Live|4.3|ChIJx1IXkvOAhYARMNdQA5IcmEc
+24|eater_sf|B7uA3Y_BjtB|Moongate Lounge|moongate-lounge|37.7937209|-122.4066555|37.79512112989272|-122.4050903201073|37.79242147010727|-122.4077899798927|28 Waverly Pl, San Francisco, CA 94108, United States|Moongate Lounge|4.5|ChIJpUlYTNmBhYARE6fZdZBiKR4
