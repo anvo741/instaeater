@@ -37,12 +37,30 @@ def default_view():
 							shortcodes=shortcodes)
 
 
+@app.route('/api/get_default_markers')
+def get_default_markers():
+	"""Get default markers for the Google Map."""
+
+	posts = [
+		{
+			"shortcode" : post.shortcode,
+			"lat" : post.lat,
+			"lng" : post.lng,
+			"maps_name" : post.maps_name,
+			"formatted_address" : post.formatted_address,
+			"rating" : post.rating
+		} for post in db.session.query(Post).filter_by(account="noodlesoupboyz")
+	]
+
+	return jsonify(posts)
+
+
 @app.route('/api/get_shortcodes')
 def get_shortcodes():
 	"""Get shortcodes to embed posts after user selects new account to view."""
 	
 	new_account = request.args.get("account")
-	print(new_account)
+	
 	shortcodes = [
 		{
 			"shortcode" : post.shortcode
