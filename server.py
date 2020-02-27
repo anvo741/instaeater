@@ -43,11 +43,12 @@ def get_shortcodes():
 	
 	new_account = request.args.get("account")
 	print(new_account)
-	posts = db.session.query(Post.shortcode).filter_by(account=new_account)
-	print(posts)
-	shortcodes = [post for post in posts]
-	print(shortcodes)
-
+	shortcodes = [
+		{
+			"shortcode" : post.shortcode
+		}
+		for post in db.session.query(Post.shortcode).filter_by(account=new_account)
+	]
 	return jsonify(shortcodes)
 
 
