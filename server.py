@@ -55,19 +55,24 @@ def get_default_markers():
 	return jsonify(posts)
 
 
-@app.route('/api/get_shortcodes')
-def get_shortcodes():
-	"""Get shortcodes to embed posts after user selects new account to view."""
+@app.route('/api/get_posts')
+def get_posts():
+	"""Get new posts after user selects new account to view."""
 	
 	new_account = request.args.get("account")
 	
-	shortcodes = [
+	posts = [
 		{
-			"shortcode" : post.shortcode
+			"shortcode" : post.shortcode,
+			"lat" : post.lat,
+			"lng" : post.lng,
+			"maps_name" : post.maps_name,
+			"formatted_address" : post.formatted_address,
+			"rating" : post.rating
 		}
-		for post in db.session.query(Post.shortcode).filter_by(account=new_account)
+		for post in db.session.query(Post).filter_by(account=new_account)
 	]
-	return jsonify(shortcodes)
+	return jsonify(posts)
 
 
 if __name__ == "__main__":
