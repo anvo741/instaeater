@@ -1,0 +1,24 @@
+1|noodlesoupboyz|B87m8aoDlwa|Nute's|nutes|
+2|noodlesoupboyz|B85isb-jjai|Kim Ky Noodle House|kim-ky-noodle-house
+3|noodlesoupboyz|B8vH7vBD9TA|Myung Dong Kyoja|myung-dong-kyoja
+4|noodlesoupboyz|B8mSQGjjqFx|Han Bat Sul Lung Tang|han-bat-sul-lung-tang
+5|noodlesoupboyz|B8SnHrJDW8O|Yuanbao Jiaozi|yuanbao-jiaozi
+6|noodlesoupboyz|B8O32CQjnoU|Northern Cafe|northern-cafe
+7|noodlesoupboyz|B7jloLMj8JN|Hai Ky Mi Gia|hai-ky-mi-gia
+8|noodlesoupboyz|B7czi8LjYnL|Kings Thai Cuisine 1|kings-thai-cuisine-1
+9|noodlesoupboyz|B7XSJZTjA2O|Kuro Obi|kuro-obi
+10|noodlesoupboyz|B7Sjzuajozd|Pho Y1 Noodle House|pho-y1-noodle-house
+11|noodlesoupboyz|B7NDo0FjyLJ|Lam Hoa Thuan Restaurant|lam-hoa-thuan-restaurant
+12|noodlesoupboyz|B64n2s5jLv8|Turtle Tower|turtle-tower
+13|eater_sf|B8y-hd8BTu5|Dumpling Time Thrive City|dumpling-time-thrive-city
+14|eater_sf|B8tu-fPBDDp|Maison Danel|maison-danel
+15|eater_sf|B8j2ZI-BEK4|Black Jet Baking Co|black-jet-baking-co
+16|eater_sf|B8b072wBHGc|Che Fico Alimentari|che-fico-alimentari
+17|eater_sf|B8SdlMxB5pS|Viridian|viridian
+18|eater_sf|B8NjUx_hOPS|Monsieur Benjamin|monsieur-benjamin
+19|eater_sf|B8AcwpbhNVx|Outerlands|outerlands
+20|eater_sf|B7-O8Z7B1s7|The Snug SF|the-snug-sf
+21|eater_sf|B77kaMtB8JM|Senor Sisig|senor-sisig
+22|eater_sf|B74yUYhhdKm|Dear Inga|dear-inga
+23|eater_sf|B72B5RQBwRP|China Live|china-live
+24|eater_sf|B7uA3Y_BjtB|Moongate Lounge|moongate-lounge
