@@ -1,5 +1,17 @@
+#posts {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow-y: scroll;
+}
+
 #map {
+  position: fixed !important;
   height: 100%;
+  top: 0;
+  right: 0;
+  width: 50%;
+  
 }
 
 html, body {
@@ -7,3 +19,4 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
