@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # app.secret_key = "ABC"
 
-# app.jinja_env.undefined = StrictUndefined
+app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def login():
@@ -26,13 +26,16 @@ def login():
 def default_view():
 	"""Show default view of Instaeater."""
 
-	results = db.session.query(Post.account).all.group_by(account)
-	accounts = [result[0] for results in results]
-	print(accounts)
+	results = db.session.query(Post.account).group_by(Post.account)
+	accounts = [result[0] for result in results]
 
-	return render_template("soup.html")
-							# accounts=accounts,
-							# shortcodes=shortcodes)
+	posts = db.session.query(Post.shortcode).filter_by(account='noodlesoupboyz')
+	shortcodes = [post[0] for post in posts]
+	print(shortcodes)
+
+	return render_template("soup.html",
+							accounts=accounts,
+							shortcodes=shortcodes)
 
 
 if __name__ == "__main__":
