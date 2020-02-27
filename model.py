@@ -12,16 +12,16 @@ class Post(db.Model):
     shortcode = db.Column(db.String(64), nullable=True)
     location_name = db.Column(db.String(64), nullable=True)
     slug = db.Column(db.String(64), nullable=True)
-    lat =
-    lng =
-    viewport_ne_lat =
-    viewport_ne_lng =
-    viewport_sw_lat = 
-    viewport_sw_lng = 
-    formatted_address = 
-    maps_name = 
-    rating =
-    place_id = 
+    lat = db.Column(db.Float, nullable=True)
+    lng = db.Column(db.Float, nullable=True)
+    viewport_ne_lat = db.Column(db.Float, nullable=True)
+    viewport_ne_lng = db.Column(db.Float, nullable=True)
+    viewport_sw_lat = db.Column(db.Float, nullable=True)
+    viewport_sw_lng = db.Column(db.Float, nullable=True)
+    formatted_address = db.Column(db.String(200), nullable=True)
+    maps_name = db.Column(db.String(100),nullable=True)
+    rating = db.Column(db.Float, nullable=True)
+    place_id = db.Column(db.String(64), nullable=True)
 
     def __repr__(self):
         """Provide helpful representation when printed."""
