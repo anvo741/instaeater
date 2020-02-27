@@ -6,7 +6,7 @@ from flask import Flask, render_template, request
 # flash, redirect, session
 # from flask_debugtoolbar import DebugToolbarExtension
 
-# from model import connect_to_db, db, Post
+from model import connect_to_db, db, Post
 
 
 app = Flask(__name__)
@@ -26,16 +26,18 @@ def login():
 def default_view():
 	"""Show default view of Instaeater."""
 
-	
+	results = db.session.query(Post.account).all.group_by(account)
+	accounts = [result[0] for results in results]
+	print(accounts)
 
-	return render_template("soup.html",
-							accounts=accounts,
-							shortcodes=shortcodes)
+	return render_template("soup.html")
+							# accounts=accounts,
+							# shortcodes=shortcodes)
 
 
 if __name__ == "__main__":
     app.debug = True
-    # connect_to_db(app)
+    connect_to_db(app)
     # DebugToolbarExtension(app)
     app.run(host="0.0.0.0")
 

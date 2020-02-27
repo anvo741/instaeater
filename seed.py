@@ -3,7 +3,7 @@
 import datetime
 from sqlalchemy import func
 
-from model import User, Rating, Movie, connect_to_db, db
+from model import Post, connect_to_db, db
 from server import app
 
 def load_posts():
@@ -11,7 +11,7 @@ def load_posts():
 
     print("Posts")
 
-    for i, row in enumerate(open("seed_data/u.user")):
+    for i, row in enumerate(open("seed_data/posts.txt")):
         row = row.rstrip()
         post_id, account, shortcode, location_name, slug, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, place_id = row.split("|")
 
@@ -31,14 +31,12 @@ def load_posts():
                     rating=rating,
                     place_id = place_id)
 
-        # We need to add to the session or it won't ever be stored
         db.session.add(post)
 
         # provide some sense of progress
         if i % 100 == 0:
             print(i)
 
-    # Once we're done, we should commit our work
     db.session.commit()
 
 
