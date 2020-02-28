@@ -22,12 +22,70 @@ class Post(db.Model):
 	formatted_address = db.Column(db.String(200), nullable=True)
 	maps_name = db.Column(db.String(100),nullable=True)
 	rating = db.Column(db.Float, nullable=True)
-	place_id = db.Column(db.String(64), nullable=True)
+	place_id = db.Column(db.String(64), db.ForeignKey('places.place_id'))
 
 	def __repr__(self):
 		"""Provide helpful representation when printed."""
 
 		return f"<Post post_id={self.post_id} account={self.account} shortcode={self.shortcode}>"
+
+
+class User(db.Model):
+	"""User data for Instaeater website."""
+
+	__tablename__ = "users"
+
+	user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	email = db.Column(db.String(64), nullable=True)
+	password = db.Column(db.String(64), nullable=True)
+
+	favorites = db.relationship('Favorite')
+
+	def __repr__(self):
+		"""Provide helpful representation when printed."""
+
+		return f"<User user_id={self.user_id} email={self.email}>"
+
+
+class Place(db.Model):
+	"""Place data for Instaeater website."""
+
+	__tablename__ = "places"
+
+	place_id = db.Column(db.String(64), primary_key=True)
+	lat = db.Column(db.Float, nullable=True)
+	lng = db.Column(db.Float, nullable=True)
+	viewport_ne_lat = db.Column(db.Float, nullable=True)
+	viewport_ne_lng = db.Column(db.Float, nullable=True)
+	viewport_sw_lat = db.Column(db.Float, nullable=True)
+	viewport_sw_lng = db.Column(db.Float, nullable=True)
+	formatted_address = db.Column(db.String(200), nullable=True)
+	maps_name = db.Column(db.String(100),nullable=True)
+	rating = db.Column(db.Float, nullable=True)
+
+	posts = db.relationship('Post')
+
+	def __repr__(self):
+		"""Provide helpful representation when printed."""
+
+		return f'<Place place_id={self.place_id} maps_name={self.maps_name}>' 
+
+
+class Favorite(db.Model):
+	"""Favorite data for Instaeater website."""
+
+	__tablename__ = "favorites"
+
+	favorite_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	place_id = db.Column(db.String(64))
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False, )
+
+	user = db.relationship('User')
+
+	def __repr__(self):
+		"""Provide helpful representation when printed."""
+
+		return f'<Favorite favorite_id={self.favorite_id} place_id={self.place_id} by user_id={self.user_id} email={self.email}>'
 
 
 def connect_to_db(app):

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Favorites {% endblock %}
+
+{% block body %}
+
+{% endblock %}
+<div id="map"></div>
+
+<div id="posts">
+
+
+{% block js %}
+<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+<script src="/static/js/favorites.js"></script>
+<script 
+	async defer 
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDim1uSxIM7THdjqlqnGbmjxGSxY7HmUGc&callback=initMap"> 
+</script>
+{% endblock %}

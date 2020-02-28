@@ -4,10 +4,11 @@
 
 {% block body %}
 <div id="login">
-	<form>
-      <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+	<form action="/" method="POST">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="email" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 </div>
+New user? <a href="/register">Create new account</a>
 {% endblock %}
