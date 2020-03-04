@@ -28,6 +28,7 @@ function initMap() {
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
+					<br><input type='button' value='click me'>
 				</div>
 			`);
 			
@@ -136,6 +137,8 @@ $('#account').change(() => {
 				markerInfo.close();
 				markerInfo.setContent(markerInfoContent);
 				markerInfo.open(map, postMarker);
+				const obj = document.querySelector(`#${post.shortcode}`)
+				obj.scrollIntoView({behavior: 'smooth'});
 			});
 		} // end of for loop
 	instgrm.Embeds.process();
