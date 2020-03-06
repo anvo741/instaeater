@@ -23,15 +23,20 @@ function initMap() {
 	$.get('/api/get_default_markers', (posts) => {
 		for (const post of posts) {
 			// create an info window for each post.
+			// add favorite button to each content window.
 			const markerInfoContent = (`
 				<div class="window-content">
 					<b>${post.maps_name}</b>
-					<li><b>Address:</b> ${post.formatted_address}</li>
-					<li><b>Rating:</b> ${post.rating}</li>
-					<br><input type='button' value='click me'>
+					<br><b>Address:</b> ${post.formatted_address}
+					<br><b>Rating:</b> ${post.rating}
+					<br><input type='button' class="favorite" id=favorite_place_${post.place_id} value='favorite'>
 				</div>
 			`);
-			
+			google.maps.event.addListener(markerInfo, 'domready',() => {
+				google.maps.event.addDomListener($('.favorite'), 'click', () => {
+					alert('test');
+				});
+			});
 			// create a marker for each post.
 			const postMarker = new google.maps.Marker({
 				position: {
@@ -58,8 +63,11 @@ function initMap() {
 		} // end of for loop
 	map.fitBounds(bounds); // auto-zoom
 	map.panToBounds(bounds); // auto-center
-	})
+	}) // end of get request
 }
+
+// add dom ready listener to infoWindow
+
 
 // https://developers.google.com/maps/documentation/javascript/examples/marker-remove
 

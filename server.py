@@ -110,7 +110,8 @@ def get_default_markers():
 			"lng" : post.lng,
 			"maps_name" : post.maps_name,
 			"formatted_address" : post.formatted_address,
-			"rating" : post.rating
+			"rating" : post.rating,
+			"place_id" : post.place_id
 		} for post in db.session.query(Post).filter_by(account="noodlesoupboyz")
 	]
 
@@ -135,6 +136,29 @@ def get_posts():
 		for post in db.session.query(Post).filter_by(account=new_account)
 	]
 	return jsonify(posts)
+
+
+# @app.route('/api/favorite', methods=['POST'])
+# def favorite():
+# 	"""If favorite exists, un-favorite, i.e. delete from table. 
+# 	Otherwise, add favorite."""
+
+# 	# list slice starts at 15 because favorite id is of the format favorite_place_id
+# 	user_id = session["user_id"]
+# 	place_id = request.form.get("favorite_place_id"[15:])
+# 	existing_favorite = Favorite.query.filter(Favorite.user_id == user_id, place_id == Favorite.place_id).first()
+
+# 	# if user has already favorited the place, un-favorite, i.e. delete from db.
+# 	if existing_favorite:
+# 		db.session.delete(existing_favorite)
+# 		db.session.commit()
+# 	# if user has not favorited the place, favorite it, i.e., create entry in db.
+# 	else:
+# 		new_favorite = Favorite(place_id=place_id, user_id=user_id)
+# 		db.session.add(new_favorite)
+# 		db.session.commit()
+
+# 	return f'place_id {place_id}'
 
 
 @app.route('/favorites')
