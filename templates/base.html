@@ -6,6 +6,8 @@
     src="https://code.jquery.com/jquery-3.4.1.js"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS from getbootstrap.com -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="/static/css/site.css" rel="stylesheet">
 </head>
   {% for message in get_flashed_messages() %}
@@ -14,28 +16,39 @@
 
 <body>
   <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse"
-         id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="/soup">Back to map</a></li>
-        <li><a href="/favorites">Favorites</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if "user_id" in session %}
-          <li><a href="/logout">Logout</a></li>
-        {% else %}
-          <li><a href="/register">Register</a></li>
-          <li><a href="/login">Login</a></li>
-        {% endif %}
-
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-	<!-- Include the page's content with this block. -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/soup">beautiful[noodle]soup</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if "user_id" in session %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/soup">Back to map <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/favorites">Favorites</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log out</a>
+      </li>
+      {% else %}
+        <li class="nav-item active">
+        <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
+        </li>
+      {% endif %}
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
 	
   {% block body %}
 	{% endblock %}
-	
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<!-- Include any page-specific Javascript using this block. -->
   	{% block js %}
   	{% endblock %}

@@ -2,7 +2,20 @@
 let map;
 let markers = [];
 
-// The below adds Google map, markers, and info windows. 
+// The below adds Google map, markers, and info windows.
+
+// post request used to favorite places on click event.
+function favoritePlace(id) {
+	$.post('/api/favorite', { 'place_id' : id }, (favorite) => {
+		let status = 'Favorite'
+		if (favorite.is_favorite) {
+			status = 'Un-Favorite'
+		}
+		console.log(status)
+		$(`#${favorite.place_id}`).html(status)
+	})
+}
+
 function initMap() {
 	// create map centered in Bay Area
 	map = new google.maps.Map($('#map')[0], {
@@ -22,21 +35,21 @@ function initMap() {
 
 	$.get('/api/get_default_markers', (posts) => {
 		for (const post of posts) {
+			// get favorite status
+			let status = 'Favorite'
+			if (post.is_favorite) {
+				status = 'Un-Favorite'
+			}
 			// create an info window for each post.
-			// add favorite button to each content window.
 			const markerInfoContent = (`
 				<div class="window-content">
 					<b>${post.maps_name}</b>
 					<br><b>Address:</b> ${post.formatted_address}
 					<br><b>Rating:</b> ${post.rating}
-					<br><input type='button' class="favorite" id=favorite_place_${post.place_id} value='favorite'>
+					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}</button>
 				</div>
 			`);
-			google.maps.event.addListener(markerInfo, 'domready',() => {
-				google.maps.event.addDomListener($('.favorite'), 'click', () => {
-					alert('test');
-				});
-			});
+
 			// create a marker for each post.
 			const postMarker = new google.maps.Marker({
 				position: {
@@ -108,6 +121,11 @@ $('#account').change(() => {
 	const new_account = { 'account': $("#account").val() };
 	$.get('/api/get_posts', new_account, (posts) => {
 		for (const post of posts) {
+			// get favorite status
+			let status = 'Favorite'
+			if (post.is_favorite) {
+				status = 'Un-Favorite'
+			}
 			// embed new posts
 			$("#posts").append(
 				`<div id = ${post.shortcode}>
@@ -116,12 +134,14 @@ $('#account').change(() => {
 					</blockquote>
 				</div>`
 			)
+			
 			// create info window for each post.
 			const markerInfoContent = (`
 				<div class="window-content">
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
+					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}</button>
 				</div>
 			`);
 			

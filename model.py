@@ -64,6 +64,7 @@ class Place(db.Model):
 	rating = db.Column(db.Float, nullable=True)
 
 	posts = db.relationship('Post')
+	favorites = db.relationship('Favorite')
 
 	def __repr__(self):
 		"""Provide helpful representation when printed."""
@@ -77,15 +78,16 @@ class Favorite(db.Model):
 	__tablename__ = "favorites"
 
 	favorite_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	place_id = db.Column(db.String(64))
-	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False, )
+	place_id = db.Column(db.String(64), db.ForeignKey('places.place_id'))
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
 
 	user = db.relationship('User')
+	place = db.relationship('Place')
 
 	def __repr__(self):
 		"""Provide helpful representation when printed."""
 
-		return f'<Favorite favorite_id={self.favorite_id} place_id={self.place_id} by user_id={self.user_id} email={self.email}>'
+		return f'<Favorite favorite_id={self.favorite_id} place_id={self.place_id} by user_id={self.user_id}>'
 
 
 def connect_to_db(app):
