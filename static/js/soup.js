@@ -12,7 +12,8 @@ function favoritePlace(id) {
 			status = 'Un-Favorite'
 		}
 		console.log(status)
-		$(`#${favorite.place_id}`).html(status)
+		// $(`#${favorite.place_id}`).html(status)
+		$(`#${favorite.place_id}`).css("color", "red");
 	})
 }
 
@@ -46,7 +47,7 @@ function initMap() {
 					<b>${post.maps_name}</b>
 					<br><b>Address:</b> ${post.formatted_address}
 					<br><b>Rating:</b> ${post.rating}
-					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}</button>
+					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>❤</button>
 				</div>
 			`);
 
@@ -141,7 +142,7 @@ $('#account').change(() => {
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
-					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}</button>
+					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}<i class="fa fa-heart-o"></button>
 				</div>
 			`);
 			

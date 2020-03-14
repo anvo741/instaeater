@@ -143,10 +143,16 @@ def get_posts():
 			"maps_name" : post.maps_name,
 			"formatted_address" : post.formatted_address,
 			"rating" : post.rating,
+			"place_id" : post.place_id,
 			"is_favorite" : False
 		}
 		for post in db.session.query(Post).filter_by(account=new_account)
 	]
+
+	# get all users favorite places
+	user_id = session["user_id"]
+	results = db.session.query(Favorite.place_id).filter_by(user_id=user_id)
+	favorite_places = [result[0] for result in results]
 
 	# loop over posts and add a field for if its favorited 
 	for post in posts:

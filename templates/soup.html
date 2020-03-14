@@ -3,25 +3,33 @@
 {% block title %} InstaEater {% endblock %}
 
 {% block body %}
-<h1> Welcome to InstaEater </h1>
-Select an Instagram handle to view.
-<select name="account" id="account">
-	{% for account in accounts %}
-	<option value="{{ account }}">{{ account }}</option>
-	{% endfor %}
-</select>
+<a name="top"></a>
+<div class="soup-wrapper">
+<div id="select-wrapper">
+	<div class="row select-format">
+		<h4>Select an Instagram handle to view.</h4>
+	</div>
+	<div class="row select-format">
+		<select name="account" id="account" class="custom-select">
+			{% for account in accounts %}
+			<option value="{{ account }}">{{ account }}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
 
 <div id="map"></div>
 
 <div id="posts">
 {% for shortcode in shortcodes %}
-<div id = {{ shortcode }}>
-	<blockquote class="instagram-media">
-		<a href="https://instagram.com/p/{{ shortcode }}/"></a>
-	</blockquote>
-</div>
+	<div id = {{ shortcode }} class="scroll-post">
+		<blockquote class="instagram-media">
+			<a href="https://instagram.com/p/{{ shortcode }}/"></a>
+		</blockquote>
+	</div>
 {% endfor %}
 </div>
+
 
 {% endblock %}
 

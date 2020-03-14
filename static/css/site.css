@@ -1,23 +1,41 @@
 #posts {
-  position: absolute;
-  left: 0;
+  position: relative;
+  left: 170px;
   width: 50%;
   overflow-y: scroll;
+  top: 80px;
 }
 
 #map {
   position: fixed !important;
   height: 100%;
-  top: 0;
+  top: 50px;
   right: 0;
   width: 50%;
   
+}
+
+#select-wrapper {
+  position: relative;
+  top: 70px;
+  width: 50%;
+}
+
+.scroll-post {
+  scroll-margin: 80px;
+}
+.select-format {
+  margin-left: 25px;
 }
 
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.custom-select {
+  width: 45%;
 }
 
 .wrapper {
@@ -27,8 +45,17 @@ html, body {
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  padding: 20px;
+  padding: 80px;
   /*background-image: url("https://farm5.staticflickr.com/4550/27106618519_11a4eb937d_b.jpg");*/
+}
+
+.soup-wrapper {
+  background-color: #f7f0f0;
+}
+
+.favorite {
+  color: #a1a1a1;
+  border: ;
 }
 
 #formContent {
@@ -48,3 +75,4 @@ html, body {
 .navbar {
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
