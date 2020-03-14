@@ -13,8 +13,11 @@ def load_posts():
 
     for i, row in enumerate(open("seed_data/posts.txt")):
         row = row.rstrip()
+        if len(row.split("|")) != 15:
+            print(f'The row is {row}')
+            print(f'The length is {len(row.split("|"))}')
+            print(row)
         post_id, account, shortcode, location_name, slug, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, place_id = row.split("|")
-
         post = Post(post_id=post_id,
                     account=account,
                     shortcode=shortcode,

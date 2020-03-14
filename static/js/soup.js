@@ -11,7 +11,7 @@ function favoritePlace(id) {
 		if (favorite.is_favorite) {
 			status = 'is-favorite'
 		}
-		$(`#${favorite.place_id}`).attr("class", `${status}`);
+		$(`#map_${favorite.place_id}`).attr("class", `${status}`);
 	})
 }
 
@@ -45,7 +45,7 @@ function initMap() {
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
-					<br><button onclick="favoritePlace(this.id)" class=${status} id=${post.place_id}>❤</button>
+					<br><button onclick="favoritePlace(this.id)" class=${status} id=map_${post.place_id}>♥</button>
 				</div>
 			`);
 
@@ -127,7 +127,7 @@ $('#account').change(() => {
 			}
 			// embed new posts
 			$("#posts").append(
-				`<div id = ${post.shortcode}>
+				`<div id = ${post.shortcode} class="scroll-post">
 					<blockquote class="instagram-media">
 						<a href="https://instagram.com/p/${post.shortcode}/"></a>
 					</blockquote>
@@ -140,12 +140,9 @@ $('#account').change(() => {
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
-					<br><button onclick="favoritePlace(this.id)" class=${status} id=${post.place_id}>❤</button>
+					<br><button onclick="favoritePlace(this.id)" class=${status} id=map_${post.place_id}>♥</button>
 				</div>
 			`);
-
-			console.log(post.maps_name)
-			console.log(post.is_favorite)
 			
 			// create a marker for each post.
 			const postMarker = new google.maps.Marker({

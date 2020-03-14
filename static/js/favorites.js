@@ -8,9 +8,33 @@ function unfavoritePlace(id) {
 		let status = 'un-favorite'
 		if (favorite.is_favorite) {
 			status = 'is-favorite'
+			for (let i = 0; i < markers.length; i +=1 ) {
+				if (markers[i]['title'] === `Name: ${favorite.maps_name}`) {
+					markers[i].setMap(map);
+				}
+			}
 		}
-		$(`#${favorite.place_id}`).attr("class", `${status}`);
-	})
+		$(`#map_${favorite.place_id}`).attr("class", `${status}`);
+		$(`#fav_${favorite.place_id}`).attr("class", `${status}`);
+		// remove from markers
+		if (! favorite.is_favorite) {
+			for (let i = 0; i < markers.length; i += 1) {
+				if (markers[i]['title'] === `Name: ${favorite.maps_name}`) {
+					markers[i].setMap(null)
+				}
+			}
+		}
+		// adjust bounds
+		let bounds = new google.maps.LatLngBounds();
+		$.get('/api/get_favorite_places', (favorites) => {
+			for (const favorite of favorites) {
+				const position = new google.maps.LatLng(favorite.lat, favorite.lng)
+				bounds.extend(position)
+			} // end of for loop
+			map.fitBounds(bounds); // auto-zoom
+			map.panToBounds(bounds); // auto-center
+		}) // end of get request
+	}) // end of post request
 }
 
 function initMap() {
@@ -44,7 +68,7 @@ function initMap() {
 					<b>${favorite.maps_name}</b>
 					<li><b>Address:</b> ${favorite.formatted_address}</li>
 					<li><b>Rating:</b> ${favorite.rating}</li>
-					<br><button onclick="unfavoritePlace(this.id)" class=${status} id=${favorite.place_id}>❤</button>
+					<br><button onclick="unfavoritePlace(this.id)" class=${status} id=map_${favorite.place_id}>♥</button>
 				</div>
 			`);
 
@@ -74,6 +98,3 @@ function initMap() {
 	map.panToBounds(bounds); // auto-center
 	}) // end of get request
 }
-
-console.log(markers)
-

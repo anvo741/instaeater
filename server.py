@@ -168,7 +168,7 @@ def favorite():
 	Otherwise, add favorite."""
 
 	user_id = session["user_id"]
-	place_id = request.form.get("place_id")
+	place_id = request.form.get("place_id")[4:]
 	existing_favorite = Favorite.query.filter_by(user_id=user_id, place_id=place_id).first()
 	favorite = {
 		"place_id" : place_id,
@@ -185,7 +185,16 @@ def favorite():
 		db.session.add(new_favorite)
 		db.session.commit()
 
-	return jsonify(favorite)
+	favorite_info = Place.query.filter_by(place_id=place_id).first()
+	favorite_data = {
+		'place_id' : favorite_info.place_id,
+		'maps_name' : favorite_info.maps_name,
+		'lat' : favorite_info.lat,
+		'lng' : favorite_info.lng,
+		'is_favorite' : favorite['is_favorite']
+	}
+
+	return jsonify(favorite_data)
 
 
 @app.route('/favorites')

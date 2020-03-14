@@ -11,7 +11,7 @@
 	<br><b>{{ favorite['maps_name'] }}</b>
 	<br>{{ favorite['formatted_address'] }}
 	<br>Rating: {{ favorite['rating'] }}
-	<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id={{ favorite['place_id'] }}>❤</button>
+	<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id="fav_{{ favorite['place_id'] }}">♥</button>
 {% endfor %}
 </div>
 
