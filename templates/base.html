@@ -24,25 +24,25 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       {% if "user_id" in session %}
-      <li class="nav-item active">
-        <a class="nav-link" href="/soup">Map <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/soup' %}active{% endif %}" href="/soup">Map <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#top">Back to top</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/favorites">Favorites</a>
+        <a class="nav-link {% if request.path == '/favorites' %}active{% endif %}" href="/favorites">Favorites</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout">Log out</a>
       </li>
       {% elif request.path == "/" %}
-        <li class="nav-item active">
-        <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+        <a class="nav-link active" href="/register">Register<span class="sr-only">(current)</span></a>
         </li>
       {% elif request.path == "/register" %}
-        <li class="nav-item active">
-        <a class="nav-link" href="/">Login<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+        <a class="nav-link active" href="/">Login<span class="sr-only">(current)</span></a>
         </li>
       {% endif %}
         </div>

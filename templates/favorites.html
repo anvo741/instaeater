@@ -7,14 +7,12 @@
 <div id="map"></div>
 
 <div id="favorites">
-
 {% for favorite in favorites %}
-<br><b>{{ favorite['maps_name'] }}</b>
-<br>{{ favorite['formatted_address'] }}
-<br>Rating: {{ favorite['rating'] }}
-<br><button onclick="unfavoritePlace(this.id)" class="favorite" id={{ favorite['place_id'] }}>Un-Favorite</button>
+	<br><b>{{ favorite['maps_name'] }}</b>
+	<br>{{ favorite['formatted_address'] }}
+	<br>Rating: {{ favorite['rating'] }}]
+	<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id={{ favorite['place_id'] }}>❤</button>
 {% endfor %}
-
 </div>
 
 {% endblock %}
@@ -27,4 +25,3 @@
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDim1uSxIM7THdjqlqnGbmjxGSxY7HmUGc&callback=initMap"> 
 </script>
 {% endblock %}
-

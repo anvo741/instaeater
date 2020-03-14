@@ -167,7 +167,6 @@ def favorite():
 	"""If favorite exists, un-favorite, i.e. delete from table. 
 	Otherwise, add favorite."""
 
-	# list slice starts at 15 because favorite id is of the format favorite_place_id
 	user_id = session["user_id"]
 	place_id = request.form.get("place_id")
 	existing_favorite = Favorite.query.filter_by(user_id=user_id, place_id=place_id).first()
@@ -209,6 +208,29 @@ def render_favorites():
 
 	return render_template("favorites.html",
 							favorites=favorites)
+
+
+@app.route('/api/get_favorite_places')
+def get_favorite_posts():
+	"""Get favorite posts."""
+	# get all users favorite places
+
+	user_id = session["user_id"]
+
+	favorites = [
+		{
+			"place_id" : favorite.place.place_id,
+			"lat" : favorite.place.lat,
+			"lng" : favorite.place.lng,
+			"maps_name" : favorite.place.maps_name,
+			"formatted_address" : favorite.place.formatted_address,
+			"rating" : favorite.place.rating,
+			"is_favorite" : True
+		}
+		for favorite in db.session.query(Favorite).filter_by(user_id=user_id)
+	]
+
+	return jsonify(favorites)
 
 
 if __name__ == "__main__":

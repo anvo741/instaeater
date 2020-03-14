@@ -6,13 +6,18 @@
   top: 80px;
 }
 
+#favorites {
+  position: relative;
+  top: 50px;
+  left: 25px;
+}
+
 #map {
   position: fixed !important;
   height: 100%;
   top: 50px;
   right: 0;
   width: 50%;
-  
 }
 
 #select-wrapper {
@@ -53,9 +58,16 @@ html, body {
   background-color: #f7f0f0;
 }
 
-.favorite {
+.is-favorite {
+  color: #e30000;
+  font-size: 1.1em;
+  border-radius: 0.25rem;
+}
+
+.un-favorite {
   color: #a1a1a1;
-  border: ;
+  font-size: 1.1em;
+  border-radius: 0.25rem;
 }
 
 #formContent {

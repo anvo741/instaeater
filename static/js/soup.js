@@ -7,13 +7,11 @@ let markers = [];
 // post request used to favorite places on click event.
 function favoritePlace(id) {
 	$.post('/api/favorite', { 'place_id' : id }, (favorite) => {
-		let status = 'Favorite'
+		let status = 'un-favorite'
 		if (favorite.is_favorite) {
-			status = 'Un-Favorite'
+			status = 'is-favorite'
 		}
-		console.log(status)
-		// $(`#${favorite.place_id}`).html(status)
-		$(`#${favorite.place_id}`).css("color", "red");
+		$(`#${favorite.place_id}`).attr("class", `${status}`);
 	})
 }
 
@@ -37,17 +35,17 @@ function initMap() {
 	$.get('/api/get_default_markers', (posts) => {
 		for (const post of posts) {
 			// get favorite status
-			let status = 'Favorite'
+			let status = 'un-favorite'
 			if (post.is_favorite) {
-				status = 'Un-Favorite'
+				status = 'is-favorite'
 			}
 			// create an info window for each post.
 			const markerInfoContent = (`
 				<div class="window-content">
 					<b>${post.maps_name}</b>
-					<br><b>Address:</b> ${post.formatted_address}
-					<br><b>Rating:</b> ${post.rating}
-					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>❤</button>
+					<li><b>Address:</b> ${post.formatted_address}</li>
+					<li><b>Rating:</b> ${post.rating}</li>
+					<br><button onclick="favoritePlace(this.id)" class=${status} id=${post.place_id}>❤</button>
 				</div>
 			`);
 
@@ -123,9 +121,9 @@ $('#account').change(() => {
 	$.get('/api/get_posts', new_account, (posts) => {
 		for (const post of posts) {
 			// get favorite status
-			let status = 'Favorite'
+			let status = 'un-favorite'
 			if (post.is_favorite) {
-				status = 'Un-Favorite'
+				status = 'is-favorite'
 			}
 			// embed new posts
 			$("#posts").append(
@@ -142,9 +140,12 @@ $('#account').change(() => {
 					<b>${post.maps_name}</b>
 					<li><b>Address:</b> ${post.formatted_address}</li>
 					<li><b>Rating:</b> ${post.rating}</li>
-					<br><button onclick="favoritePlace(this.id)" class="favorite" id=${post.place_id}>${status}<i class="fa fa-heart-o"></button>
+					<br><button onclick="favoritePlace(this.id)" class=${status} id=${post.place_id}>❤</button>
 				</div>
 			`);
+
+			console.log(post.maps_name)
+			console.log(post.is_favorite)
 			
 			// create a marker for each post.
 			const postMarker = new google.maps.Marker({
