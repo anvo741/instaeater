@@ -75,3 +75,5 @@ function initMap() {
 	}) // end of get request
 }
 
+console.log(markers)
+

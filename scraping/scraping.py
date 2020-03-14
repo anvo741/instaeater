@@ -27,5 +27,5 @@ def scan(url):
     print("Found the URL: " + link[0]['href'])
 
 while True:
-  scan("https://www.instagram.com/eater_sf/")
+  scan("https://www.instagram.com/sanfrandrinksco/")
   time.sleep(random.randint(5,10))
