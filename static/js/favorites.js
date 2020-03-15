@@ -2,6 +2,25 @@
 let map;
 let markers = [];
 
+// post request used to submit tags
+// const submit_tag = (favorite_id, tag_text) => {
+// 	$.post('/process_tags', { 'favorite_id' : favorite_id, tag_text : tag_text } (tag_response) => {
+// 		alert(tag_response)
+// 	})
+// }
+
+// click listener for tag submission button
+// $('#btn-submit-tag').on("click", () => {
+// 	$.post('/process_tags', { 'favorite_id' : $().val(), tag_text : $().val()} => {
+// 		// do stuff
+// 	})
+// })
+
+
+// grab favorite id and tag_text
+// clear input text field
+// append tag
+
 // post request used to favorite places on click event.
 function unfavoritePlace(id) {
 	$.post('/api/favorite', { 'place_id' : id }, (favorite) => {

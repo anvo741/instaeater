@@ -3,27 +3,36 @@
 {% block title %} Favorites {% endblock %}
 
 {% block body %}
-
+<a name="top"></a>
 <div id="map"></div>
 
 <div id="favorites">
-{% for favorite in favorites %}
-	<div id="favorites_{{ favorite['place_id'] }}" class="scroll-post">
-		<br><b>{{ favorite['maps_name'] }}</b>
-		<br>{{ favorite['formatted_address'] }}
-		{% if favorite['website'] != 'None' %}
-	  		<br><a href="{{ favorite['website'] }}">{{ favorite['website'] }}</a>
-	  	{% endif %}
-	  	{% if favorite['phone_number'] != 'None' %}
-	  		<br>{{ favorite['phone_number'] }}
-		{% endif %}
-		<br><b>Rating:</b> {{ favorite['rating'] }}
-		{% for hour in favorite['opening_hours'] %}
-		<br>{{ hour }}
-		{% endfor %}
-		<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id="fav_{{ favorite['place_id'] }}">♥</button>
+{% if favorites %}
+	{% for favorite in favorites %}
+		<div id="favorites_{{ favorite['place_id'] }}" class="scroll-post">
+			<br><b>{{ favorite['maps_name'] }}</b> <button onclick="unfavoritePlace(this.id)" class="is-favorite" id="fav_{{ favorite['place_id'] }}">♥</button>
+			<br>{{ favorite['formatted_address'] }}
+			{% if favorite['website'] != 'None' %}
+		  		<br><a href="{{ favorite['website'] }}">{{ favorite['website'] }}</a>
+		  	{% endif %}
+		  	{% if favorite['phone_number'] != 'None' %}
+		  		<br>{{ favorite['phone_number'] }}
+			{% endif %}
+			<br><b>Rating:</b> {{ favorite['rating'] }}
+			<br><button type="button" class="collapsible">Business Hours</button>
+			<div class="collapsible-content">
+				{% for hour in favorite['opening_hours'] %}
+					<br>{{ hour }}
+				{% endfor %}
+			</div>
+			<!-- <div class="tag-form"><input type="text" name="tag" placeholder="Enter tag here"><input type="hidden" name="favorite_id" value={{ favorite['favorite_id']}}><button type="submit" id="btn-submit-tag" class="rounded">Submit</button></div> -->
+		</div>
+	{% endfor %}
+{% else %}
+	<div id="no-favorites">
+		No favorites yet! Please return to <a href="/soup">main map page</a> to favorite locations.
 	</div>
-{% endfor %}
+{% endif %}
 </div>
 
 {% endblock %}
@@ -34,5 +43,20 @@
 <script 
 	async defer 
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDim1uSxIM7THdjqlqnGbmjxGSxY7HmUGc&callback=initMap"> 
+</script>
+<script>
+let coll = document.getElementsByClassName("collapsible");
+let coll_counter;
+for (coll_counter = 0; coll_counter < coll.length; coll_counter++) {
+  coll[coll_counter].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
 </script>
 {% endblock %}

@@ -3,7 +3,7 @@
 import datetime
 from sqlalchemy import func
 
-from model import Post, connect_to_db, db, User, Favorite, Place
+from model import Post, connect_to_db, db, User, Favorite, Place, Tag
 from server import app
 
 def load_posts():
@@ -13,10 +13,6 @@ def load_posts():
 
     for i, row in enumerate(open("seed_data/posts.txt")):
         row = row.rstrip()
-        if len(row.split("|")) != 15:
-            print(f'The row is {row}')
-            print(f'The length is {len(row.split("|"))}')
-            print(row)
         post_id, account, shortcode, location_name, slug, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, place_id = row.split("|")
         post = Post(post_id=post_id,
                     account=account,
@@ -72,8 +68,6 @@ def load_places():
     for i, row in enumerate(open("seed_data/places.txt")):
         row = row.rstrip()
         place_id, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, phone_number, opening_hours, website = row.split('|')
-        if len(row.split('|')) != 13:
-            print(row)
 
         place = Place(place_id=place_id,
                         lat=lat,
@@ -105,8 +99,6 @@ def load_favorites():
 
     for i, row in enumerate(open("seed_data/favorites.txt")):
         row = row.rstrip()
-        if len(row.split('|')) != 10:
-            print(row)
         favorite_id, place_id, user_id = row.split('|')
 
         favorite = Favorite(favorite_id=favorite_id,
@@ -114,6 +106,28 @@ def load_favorites():
                             user_id=user_id)
 
         db.session.add(favorite)
+
+        # provide some sense of progress
+        if i % 100 == 0:
+            print(i)
+
+        db.session.commit()
+
+
+def load_tags():
+    """Load tags from tags.txt into database."""
+
+    print("Tags")
+
+    for i, row in enumerate(open("seed_data/tags.txt")):
+        row = row.rstrip()
+        tag_id, favorite_id, tag_text = row.split("|")
+
+        tag = Tag(tag_id=tag_id,
+                    favorite_id=favorite_id,
+                    tag_text=tag_text)
+
+        db.session.add(tag)
 
         # provide some sense of progress
         if i % 100 == 0:
@@ -130,4 +144,5 @@ if __name__ == "__main__":
     load_posts()
     load_users()
     load_favorites()
+    load_tags()
 

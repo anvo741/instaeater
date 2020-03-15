@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, jsonify, flash, redirect, ses
 # flash, redirect, session
 # from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, Post, User, Favorite, Place
+from model import connect_to_db, db, Post, User, Favorite, Place, Tag
 
 
 app = Flask(__name__)
@@ -40,6 +40,18 @@ def login_process():
 		return redirect("/")
 
 	session["user_id"] = user.user_id
+
+	return redirect('/soup')
+
+
+@app.route('/user_demo')
+def user_demo():
+	"""Create user_id for user_demo."""
+
+	new_demo_user = User()
+	db.session.add(new_demo_user)
+	db.session.commit()
+	session["user_id"] = new_demo_user.user_id
 
 	return redirect('/soup')
 
@@ -207,6 +219,7 @@ def render_favorites():
 
 	favorites = [
 		{
+			"favorite_id" : favorite.favorite_id,
 			"place_id" : favorite.place_id,
 			"formatted_address" : favorite.place.formatted_address,
 			"maps_name" : favorite.place.maps_name,
@@ -224,7 +237,6 @@ def render_favorites():
 @app.route('/api/get_favorite_places')
 def get_favorite_posts():
 	"""Get favorite posts."""
-	# get all users favorite places
 
 	user_id = session["user_id"]
 
@@ -242,6 +254,31 @@ def get_favorite_posts():
 	]
 
 	return jsonify(favorites)
+
+
+@app.route('/process_tags', methods=["POST"])
+def process_tags():
+	"""Process tag form submission."""
+
+	# If tag exists, do nothing. Otherwise, add tag."""
+
+	tag_text = request.form.get("tag")
+	favorite_id = request.form.get("favorite_id")
+	existing_tag = Tag.query.filter_by(favorite_id=favorite_id, tag_text=tag_text).first()
+	tag_id = None
+
+	if not existing_tag:
+		new_tag = Tag(favorite_id=favorite_id, tag_text=tag_text)
+		db.session.add(new_tag)
+		tag_id = new_tag.tag_id
+		db.session.commit()
+
+	tag_response = {
+		"tag_id" : tag_id,
+		"tag_text" : tag_text
+	}
+
+	return jsonify(tag_response)
 
 
 if __name__ == "__main__":

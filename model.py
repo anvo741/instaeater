@@ -93,6 +93,23 @@ class Favorite(db.Model):
 		return f'<Favorite favorite_id={self.favorite_id} place_id={self.place_id} by user_id={self.user_id}>'
 
 
+class Tag(db.Model):
+	"""Tag data on favorite locations for Instaeater website."""
+
+	__tablename__ = "tags"
+
+	tag_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	favorite_id = db.Column(db.Integer, db.ForeignKey('favorites.favorite_id'))
+	tag_text = db.Column(db.String(100), nullable=False)
+
+	favorite = db.relationship('Favorite')
+
+	def __repr__(self):
+		"""Provide helpful representation when printed."""
+
+		return f'<Tag tag_id={self.tag_id} favorite_id={self.favorite_id}>'
+
+
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 

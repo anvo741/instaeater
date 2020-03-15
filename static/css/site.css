@@ -72,6 +72,25 @@ html, body {
   border-radius: 0.25rem;
 }
 
+.collapsible-content {
+  display: none;
+  overflow: hidden;
+}
+
+.collapsible {
+  border-radius: 0.25rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+#no-favorites {
+  position: relative;
+  top: 80px;
+  width: 50%;
+}
+
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
