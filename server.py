@@ -210,11 +210,13 @@ def render_favorites():
 			"place_id" : favorite.place_id,
 			"formatted_address" : favorite.place.formatted_address,
 			"maps_name" : favorite.place.maps_name,
-			"rating" : favorite.place.rating
+			"rating" : favorite.place.rating,
+			"phone_number" : favorite.place.phone_number,
+			"opening_hours" : favorite.place.opening_hours.strip('"weekday_text" : ')[2:-2].split('","'),
+			"website" : favorite.place.website
 		}
 		for favorite in Favorite.query.filter_by(user_id=user_id).all()
 	]
-
 	return render_template("favorites.html",
 							favorites=favorites)
 

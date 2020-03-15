@@ -71,7 +71,9 @@ def load_places():
 
     for i, row in enumerate(open("seed_data/places.txt")):
         row = row.rstrip()
-        place_id, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating = row.split('|')
+        place_id, lat, lng, viewport_ne_lat, viewport_ne_lng, viewport_sw_lat, viewport_sw_lng, formatted_address, maps_name, rating, phone_number, opening_hours, website = row.split('|')
+        if len(row.split('|')) != 13:
+            print(row)
 
         place = Place(place_id=place_id,
                         lat=lat,
@@ -82,7 +84,10 @@ def load_places():
                         viewport_sw_lng=viewport_sw_lng,
                         formatted_address=formatted_address,
                         maps_name=maps_name,
-                        rating=rating)
+                        rating=rating,
+                        phone_number=phone_number,
+                        opening_hours=opening_hours,
+                        website=website)
 
         db.session.add(place)
 

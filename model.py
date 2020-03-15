@@ -62,6 +62,9 @@ class Place(db.Model):
 	formatted_address = db.Column(db.String(200), nullable=True)
 	maps_name = db.Column(db.String(100),nullable=True)
 	rating = db.Column(db.Float, nullable=True)
+	phone_number = db.Column(db.String(20), nullable=True)
+	opening_hours = db.Column(db.String(400), nullable=True)
+	website = db.Column(db.String(200), nullable=True)
 
 	posts = db.relationship('Post')
 	favorites = db.relationship('Favorite')

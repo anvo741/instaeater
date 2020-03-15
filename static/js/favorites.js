@@ -92,6 +92,8 @@ function initMap() {
 				markerInfo.close();
 				markerInfo.setContent(markerInfoContent);
 				markerInfo.open(map, postMarker);
+				const obj = document.querySelector(`#favorites_${favorite.place_id}`)
+				obj.scrollIntoView({behavior: 'smooth'});
 			});
 		} // end of for loop
 	map.fitBounds(bounds); // auto-zoom

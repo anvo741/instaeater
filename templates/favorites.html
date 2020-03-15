@@ -8,10 +8,21 @@
 
 <div id="favorites">
 {% for favorite in favorites %}
-	<br><b>{{ favorite['maps_name'] }}</b>
-	<br>{{ favorite['formatted_address'] }}
-	<br>Rating: {{ favorite['rating'] }}
-	<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id="fav_{{ favorite['place_id'] }}">♥</button>
+	<div id="favorites_{{ favorite['place_id'] }}" class="scroll-post">
+		<br><b>{{ favorite['maps_name'] }}</b>
+		<br>{{ favorite['formatted_address'] }}
+		{% if favorite['website'] != 'None' %}
+	  		<br><a href="{{ favorite['website'] }}">{{ favorite['website'] }}</a>
+	  	{% endif %}
+	  	{% if favorite['phone_number'] != 'None' %}
+	  		<br>{{ favorite['phone_number'] }}
+		{% endif %}
+		<br><b>Rating:</b> {{ favorite['rating'] }}
+		{% for hour in favorite['opening_hours'] %}
+		<br>{{ hour }}
+		{% endfor %}
+		<br><button onclick="unfavoritePlace(this.id)" class="is-favorite" id="fav_{{ favorite['place_id'] }}">♥</button>
+	</div>
 {% endfor %}
 </div>
 
